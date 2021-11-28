@@ -32,7 +32,7 @@ export const tvType: TvType = {
 
 const tmdbApi = {
 
-    getMoviesList: (type: string, params: any) => {
+    getMoviesList: (type: string, params?: any) => {
         const url = 'movie/' + movieType[type];
         return axiosClient.get(url, params);
     },

@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import './button.scss';
+
 interface ButtonProps {
     className?: string;
     onClick?: any;
@@ -20,7 +22,7 @@ const Button = (props: ButtonProps) => {
     )
 }
 
-const OutlineButton = (props: any) => {
+export const OutlineButton = (props: any) => {
     return (
         <Button
         className={`btn-outline ${props.className}`} 
