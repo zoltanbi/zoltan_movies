@@ -43,7 +43,7 @@ const HeroSlide = () => {
                 grabCursor={true}
                 spaceBetween={0}
                 slidesPerView={1}
-                // autoplay={{delay: 3000}}
+                // autoplay={{delay: 4000}}
             >
                 {
                     movieItems.map((item, i) => (
@@ -76,7 +76,7 @@ const HeroSlideItem = (props: ItemProps) => {
     const background = apiConfig.originalImage(item.backdrop_path ? item.backdrop_path : item.poster_path);
 
     const setModalActive = async () => {
-        const modal = document.querySelector(`#modal_${item.id}`);
+        const modal = document.querySelector(`#modal_${item.id}`);  
         console.log(`modal_${item.id}`)
         console.log(modal)
 
