@@ -55,7 +55,7 @@ const MovieList = (props: MovieListProps) => {
             >
                 {
                     items.map((item, i) => (
-                        <SwiperSlide>
+                        <SwiperSlide key={i}>
                             <MovieCard item={item} category={props.category}/>
                         </SwiperSlide>
                     ))
