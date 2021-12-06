@@ -20,14 +20,13 @@ const HeroSlide = () => {
 
     useEffect(() => {
         const getMovies = async () => {
-            console.log("test")
             const params = {page: 1}
             try {
                 const response = await tmdbApi.getMoviesList(movieType.popular, {params});
                 // TODO: figure out TS error
                 // @ts-ignore
                 setMovieItems(response.results.slice(0, 4));
-                console.log(response)
+                //console.log(response)
             } catch {
                 console.log('error');
             }

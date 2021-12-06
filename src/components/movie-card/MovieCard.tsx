@@ -9,7 +9,12 @@ import Button from '../button/Button';
 import { category } from '../../api/tmdbApi';
 import apiConfig from '../../api/apiConfig';
 
-const MovieCard = (props: any) => {
+interface MovieCardProps {
+    item: any;
+    category: string;
+}
+
+const MovieCard = (props: MovieCardProps) => {
 
     const item = props.item;
 
