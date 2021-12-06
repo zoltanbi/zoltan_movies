@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import './moviegrid.scss'
 
 import MovieCard from '../movie-card/MovieCard';
+import Button, { OutlineButton } from '../button/Button';
+import Input from '../input/Input';
+
 import tmdbApi, { category, movieType, tvType } from '../../api/tmdbApi';
-import { OutlineButton } from '../button/Button';
 
 interface MovieGridProps {
     category: string;
@@ -76,6 +78,9 @@ const MovieGrid = (props: MovieGridProps) => {
 
     return (
         <>
+            <div className="section mb-3">
+                <MovieSearch category={props.category} keyword={keyword!}/>
+            </div>
             <div className="movie-grid">
                 {
                     items.map((item, i) => <MovieCard category={props.category} item={item} key={i}/>)
@@ -89,6 +94,52 @@ const MovieGrid = (props: MovieGridProps) => {
                 ) : null
             }
         </>
+    )
+}
+
+interface MovieSearchProps {
+    keyword: string;
+    category: string;
+}
+
+const MovieSearch = (props: MovieSearchProps) => {
+
+    const navigate = useNavigate();
+
+    const [keyword, setKeyword] = useState(props.keyword ? props.keyword : '');
+
+    const goToSearch = useCallback(
+        () => {
+            if (keyword.trim().length > 0) {
+                navigate(`/${category[props.category]}/search/${keyword}`);
+            }
+        },
+        [keyword, props.category, navigate]
+    );
+
+    useEffect(() => {
+        const enterEvent = (e: any) => {
+            e.preventDefault();
+            if (e.keyCode === 13) {
+                goToSearch();
+            }
+        }
+        document.addEventListener('keyup', enterEvent);
+        return () => {
+            document.removeEventListener('keyup', enterEvent);
+        };
+    }, [keyword, goToSearch]);
+
+    return (
+        <div className="movie-search">
+            <Input
+                type="text"
+                placeholder="Enter keyword"
+                value={keyword}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value)}
+            />
+            <Button className="small" onClick={goToSearch}>Search</Button>
+        </div>
     )
 }
 
