@@ -5,6 +5,7 @@ import tmdbApi from '../../api/tmdbApi';
 import apiConfig from '../../api/apiConfig';
 
 import './detail.scss';
+import CastList from './CastList';
 
 const Detail = () => {
 
@@ -50,7 +51,7 @@ const Detail = () => {
                                     <div className="section__header">
                                         <h2>Casts</h2>
                                     </div>
-                                    {/* Casts List */}
+                                    <CastList id={item.id}/>
                                 </div>
                             </div>
                         </div>
