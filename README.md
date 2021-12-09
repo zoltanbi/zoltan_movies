@@ -6,8 +6,11 @@ A responsive web app to find and discover movies using resources from themoviedb
 
 - React
 - Typescript
-- SCSS
+- HTML
+- CSS
+- SASS
 - Boxicons
+- Axios
 
 ## Sneak-peak
 
