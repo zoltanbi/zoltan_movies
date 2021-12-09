@@ -9,11 +9,11 @@ interface CastListProps {
     id: number;
 }
 
-const CastList = (props: any) => {
+const CastList = (props: CastListProps) => {
 
     const { category } = useParams();
 
-    const [casts, setCasts] = useState<[]>([]);
+    const [casts, setCasts] = useState([]);
 
     useEffect(() => {
         const getCredits = async () => {
@@ -29,7 +29,7 @@ const CastList = (props: any) => {
         <div className="casts">
             {
                 casts.map((item: any, i: number) => (
-                    <div className="casts__item">
+                    <div className="casts__item" key={i}>
                         <div className="casts__item__img" style={{backgroundImage: 
                             `url(${apiConfig.w500Image(item.profile_path)})`}}></div>
                         <p className="casts__item__name">{item.name}</p>
