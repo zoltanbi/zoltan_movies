@@ -15,13 +15,22 @@ const Catalog = () => {
     return (
         <>
             <PageHeader>
-                {category === cate.movie ? 'Movies' : 'TV Series'}
+                {category === cate.movie ? 'Movies' : (category === cate.tv ? 'TV Series' : 'Error 404: Not found')}
             </PageHeader>
-            <div className="container">
-                <div className="section mb-3">
-                    <MovieGrid category={category!}/>
+            { (category === cate.movie || category === cate.tv) ? (
+                <div className="container">
+                    <div className="section mb-3">
+                        <MovieGrid category={category!}/>
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <div className="container">
+                    <div className="section mb-3">
+                        <h2 className="global-center">Oops, we can't find what you are looking for!</h2>
+                    </div>
+                </div>
+            )}
+            
         </>
     )
 }

@@ -81,3 +81,7 @@ iframe {
 .section__header {
   @include flex(center, space-between);
 }
+
+.global-center {
+  @include flex(center, center);
+}
